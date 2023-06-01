@@ -10,8 +10,8 @@ const definicionTipos = gql`
         mensaje: String!
         fecha: String!
         hora: String!
-        latitud: Int!
-        longitud: Int!
+        latitude: Float!
+        longitude: Float!
     }
 
     type Contacto {
@@ -20,13 +20,18 @@ const definicionTipos = gql`
         telefono: String!
         direccion: String!
         alias: String!
-        lat: String!
-        lon: String!
+        latitude: Float!
+        longitude: Float!
     }
 
     type Query {
         todosContactos: [Contacto]!
         todosReportes: [Reporte]!
+    }
+
+    type Mutation {
+      crearContacto(nombre: String!, telefono: String!, direccion: String!, 
+        alias: String!, latitude: Float!, longitude: Float!): Boolean!
     }
 `
 const resolvers = {
@@ -49,6 +54,26 @@ const resolvers = {
           throw new Error(error);
         }
       }
+    },
+
+    Mutation: {
+      crearContacto: async (parent, args) => {
+
+        try {
+          const response = await agregarContactos(
+            args.nombre,
+            args.telefono,
+            args.direccion,
+            args.alias,
+            args.latitude,
+            args.longitude)
+
+            console.log(response)
+            return (response);
+        } catch (e){
+          throw new Error(error);
+        } 
+      },
     }
   };
 

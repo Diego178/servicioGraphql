@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export async function obtenerReportes() {
     return new Promise((resolve, reject) => {
-    axios.get('http:127.0.0.1:8000/reportes/')
+    axios.get('https://apirest-production-709d.up.railway.app/reportes/')
     .then((response) => {
         resolve(response.data)
     }).catch((e) => {
@@ -13,7 +13,7 @@ export async function obtenerReportes() {
 
 export async function crearReporte(esp32, mensaje, fecha, hora, latitude, longitude) {
     return new Promise((resolve, reject) => {
-    axios.post('http://127.0.0.1:8000/reportes/post/',
+    axios.post('https://apirest-production-709d.up.railway.app/reportes/post/',
     {
         "esp32": esp32,
         "mensaje": mensaje,

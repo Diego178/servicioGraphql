@@ -82,7 +82,8 @@ const server = new ApolloServer({
     resolvers,
     cors: true
   });
+
   
-  server.listen({ port: 4000}).then(({ url }) => {
+  server.listen({ port: process.env.PORT || 4000}).then(({ url }) => {
       console.log(`Server running at ${url}`);
   });

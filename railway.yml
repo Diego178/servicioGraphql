@@ -1,0 +1,11 @@
+version: 2
+services:
+  graph:
+      image: graphql
+      build:
+        cmd: npm install --production
+        path: .
+      start:
+        cmd: npm start
+      ports:
+        - 4000:4000

@@ -7,7 +7,7 @@ export async function obtenerContactos() {
     </Body>
     </Envelope>`
 
-    var url = "http://localhost:8080/ws/emergencias.wsdl"
+    var url = "http://ip172-18-0-16-chu0k66fml8g00cp0g30-8080.direct.labs.play-with-docker.com:8080/ws/emergencias.wsdl"
 
     return new Promise((resolve, reject) => {
         soap.createClient(url, function(error, client){
